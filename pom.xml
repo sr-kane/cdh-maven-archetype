@@ -11,6 +11,7 @@
 
   <modules>
     <module>mapred-driver</module>
+    <module>mapreduce-driver</module>
   </modules>
 
   <properties>
@@ -83,15 +84,15 @@
 
     <plugins>
       <plugin>
-	<groupId>com.mycila.maven-license-plugin</groupId>
+        <groupId>com.mycila.maven-license-plugin</groupId>
         <artifactId>maven-license-plugin</artifactId>
-	<version>${maven-license-plugin.version}</version>
+        <version>${maven-license-plugin.version}</version>
         <configuration>
           <header>LICENSE.txt</header>
           <aggregate>true</aggregate>
-	  <excludes>
-	    <exclude>**/*.txt</exclude>
-	  </excludes>
+          <excludes>
+            <exclude>**/*.txt</exclude>
+          </excludes>
         </configuration>
       </plugin>
     </plugins>

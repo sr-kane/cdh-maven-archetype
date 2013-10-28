@@ -7,12 +7,12 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>mapred-driver</artifactId>
+  <artifactId>mapreduce-driver</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>MapReduce Driver</name>
-  <description>Sample MapReduce Driver - run with 'bin/hadoop jar project-1.0-SNAPSHOT-driver.jar'</description>
+  <name>MapReduce Driver New Api</name>
+  <description>Sample New Api MapReduce Driver - run with 'bin/hadoop jar project-1.0-SNAPSHOT-driver.jar'</description>
 
   <properties>
     <jdkLevel>1.6</jdkLevel>
@@ -22,8 +22,9 @@
     <hadoop.releases.repo>https://repository.cloudera.com/content/repositories/releases/</hadoop.releases.repo>
     <hadoop.snapshots.repo>https://repository.cloudera.com/content/repositories/snapshots/</hadoop.snapshots.repo>
 
-    <hadoop.version>0.20.2-cdh3u1</hadoop.version>
+    <hadoop.version>cdh4.3.2</hadoop.version>
     <junit.version>4.8.1</junit.version>
+    <mrunit.version>1.0.0</mrunit.version>
 
     <maven-assembly-plugin.version>2.2-beta-5</maven-assembly-plugin.version>
     <maven-compiler-plugin.version>2.2</maven-compiler-plugin.version>
@@ -59,20 +60,24 @@
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-core</artifactId>
-      <version>${hadoop.version}</version>
+      <version>2.0.0-mr1-${hadoop.version}</version>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-examples</artifactId>
-      <version>${hadoop.version}</version>
-      <scope>test</scope>
+      <artifactId>hadoop-common</artifactId>
+      <version>2.0.0-${hadoop.version}</version>
+      <scope>provided</scope>
     </dependency>
+
     <dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-mrunit</artifactId>
-      <version>${hadoop.version}</version>
-      <scope>test</scope>
+      <groupId>org.apache.mrunit</groupId>
+      <artifactId>mrunit</artifactId>
+      <version>${mrunit.version}</version>
+      <!-- use hadoop2 for CDH4 even if using MR1 -->
+      <!--https://groups.google.com/a/cloudera.org/forum/#!topic/cdh-user/4AB73NLStlA-->
+      <classifier>hadoop2</classifier>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
